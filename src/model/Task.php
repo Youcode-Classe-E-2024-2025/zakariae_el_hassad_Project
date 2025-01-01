@@ -2,26 +2,28 @@
 
 class Task {
 
-    public const STATUS_TODO = 'pending';
-    public const STATUS_DIONG = 'in_progress';
-    public const STATUS_DONE = 'completed';
-
     private int $id;
     private string $titre;
     private string $description;
-    private string $status;
+    private Status $status;
+    private Category $category;
     private dateTime $starteAt;
     private dateTime $completeAt;
     private dateTime $createdAt;
+    private array $project;
+    private Member $member;
 
-    public function __construct(int $id , string $titre , string $description ,string $status , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt){
+    public function __construct(int $id , string $titre , string $description ,Status $status, category $Category , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt , array $project , Member $member){
         $this->id = $id;
         $this->titre =$titre;
         $this->description = $description;
         $this->status = $status;
+        $this->category = $Category;
         $this->starteAt = $starteAt;
         $this->completeAt = $completeAt;
         $this->createdAt = $createdAt;
+        $this->project = $project;
+        $this->member = $member;
     }
 
     public function getId() : int {
@@ -45,11 +47,18 @@ class Task {
         $this->description = $description;
     }
 
-    public function getStatus() : string {
+    public function getStatus() : Status {
         return $this->status;
     }
-    public function setStatus(string $status) : void{
+    public function setStatus(Status $status) : void{
         $this->status = $status;
+    }
+
+    public function getCategory() : Category{
+        return $this->category;
+    }
+    public function setCategory(Category $category) : void {
+        $this->category = $category;
     }
 
     public function getStarteAt() : dateTime {
@@ -71,6 +80,20 @@ class Task {
     }
     public function setCreatedAt(dateTime $createdAt) : void {
         $this->createdAt = $createdAt; 
+    }
+
+    public function getProject() : array {
+        return $this->project;
+    }
+    public function setProject(array $project) : void{
+        $this->project = $project;
+    }
+
+    public function getMember() : Member {
+        return $this->member;
+    }
+    public function setMember(Member $member) : void {
+        $this->member = $member;
     }
 
 }

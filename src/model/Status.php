@@ -1,6 +1,6 @@
 <?php
 
-class Tag {
+class Status {
     private int $id;
     private string $name;
     private array $task;
@@ -31,5 +31,6 @@ class Tag {
     public function setTasks(array $task) : void {
         $this->task = $task;
     }
-}
 
+
+}
