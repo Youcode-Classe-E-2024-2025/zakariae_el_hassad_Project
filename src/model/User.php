@@ -54,4 +54,18 @@ class User
     {
         $this->password = $password;
     }
+
+    public function add(){
+        $sqlStarte = $this->database()->prepare("INSERT INTO users VALUES(? , ? , ? , ?)");
+        return $sqlStarte->execute([
+            $this->id,
+            $this->name,
+            $this->email,
+            $this->password
+        ]);
+    }
+
+    public function database(){
+        return new PDO('mysql:dbname=manager_project;host=localhost',"root","");
+    }
 }

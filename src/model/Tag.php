@@ -3,12 +3,10 @@
 class Tag {
     private int $id;
     private string $name;
-    private array $task;
 
-    public function __construct(int $id , string $name , array $task){
+    public function __construct(int $id = 0, string $name = ""){
         $this->id = $id;
         $this->name = $name;
-        $this->task = $task;
     }
 
     public function getId() :int {
@@ -21,15 +19,21 @@ class Tag {
     public function getName() :string{
         return $this->name;
     }
+
     public function setName(string $name) : void{
         $this->name = $name;
     }
 
-    public function getTasks() : array{
-        return $this->task;
+
+    public function add(): bool{
+        $sqlStarte = $this->database()->prepare("INSERT INTO tags (name) VALUES(?)");
+        return $sqlStarte->execute([
+            $this->name
+        ]);
     }
-    public function setTasks(array $task) : void {
-        $this->task = $task;
+
+    public function database(){
+        return new PDO('mysql:dbname=manager_project;host=localhost',"root","");
     }
 }
 

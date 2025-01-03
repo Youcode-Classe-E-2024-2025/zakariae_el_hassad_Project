@@ -25,6 +25,16 @@
     <script src="../../public/JS/charts-lines.js" defer></script>
     <script src="../../public/JS/charts-pie.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      .truncate-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Nعرض 3 أسطر فقط */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    </style>
   </head>
   <body>
     <div
@@ -838,7 +848,7 @@
               Dashboard
             </h2>
             <!-- Cards -->
-            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
               <!-- Card -->
               <div
                 class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
@@ -856,12 +866,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Total clients
+                    Total project
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    6389
+                    15
                   </p>
                 </div>
               </div>
@@ -884,12 +894,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Account balance
+                    total project public
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    $ 46,760.89
+                   8
                   </p>
                 </div>
               </div>
@@ -910,40 +920,12 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    New sales
+                  total project private
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
                   >
-                    376
-                  </p>
-                </div>
-              </div>
-              <!-- Card -->
-              <div
-                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <div
-                  class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fill-rule="evenodd"
-                      d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <div>
-                  <p
-                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                  >
-                    Pending contacts
-                  </p>
-                  <p
-                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
-                  >
-                    35
+                  6
                   </p>
                 </div>
               </div>
@@ -953,18 +935,91 @@
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <!--les project  -->
-                <div class="flex justify-center align-middle gap-20">
-                  <button class="bg-black w-[300px] h-[200px]">
-                    <h1  class="text-white">dcdscsdc</h1>
-                  </button>
-                  <button class="bg-black w-[300px] h-[200px]">
-                    <h1  class="text-white">dcdscsdc</h1>
-                  </button>
-                  <button class="bg-black w-[300px] h-[200px]">
-                    <h1  class="text-white">dcdscsdc</h1>
-                  </button>
+                <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
+                  <article
+                  class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]"
+                >
+                  <h1 class="text-2xl font-bold text-white text-center mb-2">Name</h1>
+                  <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 10th Oct 2022 </time>
+                    <a href="#">
+                      <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+                        How to center an element using JavaScript and jQuery
+                      </h3>
+                    </a>
+                    <div class="mt-4 flex flex-wrap gap-1">
+                      <span
+                        class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
+                      >
+                        Public
+                      </span>
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]"
+                >
+                  <h1 class="text-2xl font-bold text-white text-center mb-2">Name</h1>
+                  <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+                    <time datetime="2022-10-10" class="block text-xs text-gray-500"> 10th Oct 2022 </time>
+                    <a href="#">
+                      <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+                        How to center an element using JavaScript and jQuery
+                      </h3>
+                    </a>
+                    <div class="mt-4 flex flex-wrap gap-1">
+                      <span
+                        class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
+                      >
+                        Public
+                      </span>
+                    </div>
+                  </div>
+                </article>
+                  
+                <article
+                class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]"
+              >
+                <h1 class="text-2xl font-bold text-white text-center mb-2">Name</h1>
+                <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+                  <time datetime="2022-10-10" class="block text-xs text-gray-500"> 10th Oct 2022 </time>
+                  <a href="#">
+                    <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+                      How to center an element using JavaScript and jQuery
+                    </h3>
+                  </a>
+                  <div class="mt-4 flex flex-wrap gap-1">
+                    <span
+                      class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
+                    >
+                      Public
+                    </span>
+                  </div>
                 </div>
-                <h1 class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim, aperiam. Facilis natus nulla laudantium beatae harum. Vitae mollitia quia cum culpa, exercitationem atque, commodi accusamus laborum aspernatur similique inventore labore. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsum a soluta facilis quasi optio, voluptates, porro obcaecati voluptatem debitis quis? Ipsa, placeat laborum. Soluta deserunt debitis ut accusantium ea. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, eius non! Porro, adipisci exercitationem similique quaerat dolorem minima tenetur vero, reiciendis possimus autem quam laudantium magni. Mollitia non sapiente quibusdam.</h1>
+              </article>
+
+              <article
+              class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]"
+            >
+              <h1 class="text-2xl font-bold text-white text-center mb-2">Name</h1>
+              <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+                <time datetime="2022-10-10" class="block text-xs text-gray-500"> 10th Oct 2022 </time>
+                <a href="#">
+                  <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+                    How to center an element using JavaScript and jQuery
+                  </h3>
+                </a>
+                <div class="mt-4 flex flex-wrap gap-1">
+                  <span
+                    class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
+                  >
+                    Public
+                  </span>
+                </div>
+              </div>
+            </article>
+                </div>
               </div>
             </div>
 
@@ -1006,31 +1061,7 @@
                   </div>
                 </div>
               </div>
-              <div
-                class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                  Traffic
-                </h4>
-                <canvas id="line"></canvas>
-                <div
-                  class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
-                >
-                  <!-- Chart legend -->
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"
-                    ></span>
-                    <span>Organic</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"
-                    ></span>
-                    <span>Paid</span>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </main>
