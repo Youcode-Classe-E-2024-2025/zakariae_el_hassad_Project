@@ -1,8 +1,8 @@
 <?php
 
-class database {
+class DatabaseConnection {
     private $host = "localhost";
-    private $db_name ="";
+    private $db_name ="manager_project";
     private $username="root";
     private $password="";
     private $conn;
