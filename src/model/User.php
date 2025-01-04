@@ -7,7 +7,7 @@ class User
     protected string $email;
     protected string $password;
 
-    public function __construct(int $id, string $name, string $email, string $password)
+    public function __construct(int $id = 0, string $name= "", string $email= "", string $password= "")
     {
         $this->id = $id;
         $this->name = $name;
@@ -55,15 +55,7 @@ class User
         $this->password = $password;
     }
 
-    public function add(){
-        $sqlStarte = $this->database()->prepare("INSERT INTO users VALUES(? , ? , ? , ?)");
-        return $sqlStarte->execute([
-            $this->id,
-            $this->name,
-            $this->email,
-            $this->password
-        ]);
-    }
+    
 
     public function database(){
         return new PDO('mysql:dbname=manager_project;host=localhost',"root","");

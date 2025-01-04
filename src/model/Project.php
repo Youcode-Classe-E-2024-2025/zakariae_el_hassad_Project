@@ -6,14 +6,13 @@ class Project {
     private string $description;
     private bool $isPublic;
     private array $task;
-    public ProjectManager $projectManager;
+    public ?ProjectManager $projectManager;
 
-    public function __construct(int $id, string $name, string $description, bool $isPublic , array $task , ProjectManager $projectManager) {
+    public function __construct(int $id = 0, string $name, string $description, bool $isPublic, ?ProjectManager $projectManager) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->isPublic = $isPublic;
-        $this->task = $task;
         $this->projectManager = $projectManager;
     }   
 

@@ -11,9 +11,9 @@ class Task {
     private dateTime $completeAt;
     private dateTime $createdAt;
     private array $project;
-    private Member $member;
+    private ?ProjectMember $ProjectMember;
 
-    public function __construct(int $id , string $titre , string $description ,Status $status, category $Category , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt , array $project , Member $member){
+    public function __construct(int $id , string $titre , string $description ,Status $status, category $Category , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt , array $project , ?ProjectMember $ProjectMember){
         $this->id = $id;
         $this->titre =$titre;
         $this->description = $description;
@@ -23,7 +23,7 @@ class Task {
         $this->completeAt = $completeAt;
         $this->createdAt = $createdAt;
         $this->project = $project;
-        $this->member = $member;
+        $this->ProjectMember = $ProjectMember;
     }
 
     public function getId() : int {
@@ -89,11 +89,11 @@ class Task {
         $this->project = $project;
     }
 
-    public function getMember() : Member {
-        return $this->member;
+    public function getMember() : ProjectMember {
+        return $this->ProjectMember;
     }
-    public function setMember(Member $member) : void {
-        $this->member = $member;
+    public function setMember(ProjectMember $ProjectMember) : void {
+        $this->ProjectMember = $ProjectMember;
     }
 
 }
