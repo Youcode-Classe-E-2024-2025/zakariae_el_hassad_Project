@@ -1,8 +1,5 @@
 <?php
 
-require_once "../config/DatabaseConnection.php";
-require_once "../model/Project.php";
-
 class ProjectDao
 {
     private PDO $connection;
@@ -24,11 +21,18 @@ class ProjectDao
         ]);
     }
 
-    public function update(int $id, Project $project) {}
+    public function getAll()
+    {
+        $stmt = $this->connection->query("SELECT * FROM projects");
 
-    public function delete(int $id) {}
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    public function getAll() {}
+        $projects = [];
+        foreach ($rows as $row) {
+            $project = new Project($row["id"], $row["name"], $row["description"], $row["is_public"], null);
+            array_push($projects, $project);
+        }
 
-    public function getById(int $id) {}
+        return $projects;
+    }
 }
