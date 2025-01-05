@@ -13,11 +13,12 @@ class ProjectService
     public function save(array $data)
     {
         $isPublic = $data["visibility"] ===  "private" ?
-            true :
-            false;
+            false :
+            true;
 
-        $projectManager = new ProjectManager();
-        $projectManager->setId(1);
+        $projectManager = new User();
+        $user = $_SESSION["user"];  
+        $projectManager->setId($user->getId());
 
         $Project = new Project(
             name: $data["name"],
@@ -31,6 +32,11 @@ class ProjectService
 
     public function getAll()
     {
-        return $this->projectDao->getAll();
+        $user = $_SESSION["user"];
+        return $this->projectDao->getAll($user->getId());
+    }
+
+    public function getPublicProjects() {
+        return $this->projectDao->getPublicProjects();
     }
 }

@@ -2,17 +2,19 @@
 
 class User
 {
-    protected int $id;
-    protected string $name;
-    protected string $email;
-    protected string $password;
+    private int $id;
+    private string $name;
+    private string $email;
+    private string $password;
+    private ?Role $role;
 
-    public function __construct(int $id = 0, string $name= "", string $email= "", string $password= "")
+    public function __construct(int $id = 0, string $name = "", string $email = "", string $password = "", ?Role $role = null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
+        $this->role = $role;
     }
 
     public function getId(): int
@@ -55,9 +57,13 @@ class User
         $this->password = $password;
     }
 
-    
+    public function getRole(): Role
+    {
+        return $this->role;
+    }
 
-    public function database(){
-        return new PDO('mysql:dbname=manager_project;host=localhost',"root","");
+    public function setRole(Role $role): void
+    {
+        $this->role = $role;
     }
 }

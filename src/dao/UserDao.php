@@ -12,11 +12,12 @@ class UserDao
 
     public function create(User $user): int
     {
-        $stmt = $this->connection->prepare("INSERT INTO users (name,email,password) VALUES( :name , :email , :password)");
+        $stmt = $this->connection->prepare("INSERT INTO users (name,email,password, role_id) VALUES( :name , :email , :password, :role_id)");
         $stmt->execute([
             "name" => $user->getName(),
             "email" => $user->getEmail(),
-            "password" => $user->getPassword()
+            "password" => $user->getPassword(),
+            "role_id" => $user->getRole()->getId()
         ]);
         return $this->connection->lastInsertId();
     }
@@ -31,11 +32,15 @@ class UserDao
             return null;
         }
 
+        $role = new Role();
+        $role->setId($userData["role_id"]);
+        
         return new User(
             id: $userData["id"],
             name: $userData["name"],
             email: $userData["email"],
-            password: $userData["password"]
+            password: $userData["password"],
+            role: $role
         );
     }
 }

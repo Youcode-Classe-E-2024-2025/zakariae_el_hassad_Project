@@ -3,14 +3,10 @@
 class UserService
 {
     private UserDao $userDao;
-    private ProjectManagerDao $projectManagerDao;
-    private ProjectMemberDao $projectMemberDao;
 
     public function __construct()
     {
         $this->userDao = new UserDao();
-        $this->projectManagerDao = new ProjectManagerDao();
-        $this->projectMemberDao = new ProjectMemberDao();
     }
 
     public function register(array $data)
@@ -26,19 +22,17 @@ class UserService
         }
 
         $hashedPassword = password_hash($data["password"], PASSWORD_DEFAULT);
+        $role = new Role();
+        $role->setId($data["role_id"]);
+
         $user = new User(
             name: $data["name"],
             email: $data["email"],
-            password: $hashedPassword
+            password: $hashedPassword,
+            role: $role
         );
         $id = $this->userDao->create($user);
         $user->setId($id);
-
-        if ($data["role"] == "PROJECT_MEMBER") {
-            $this->projectMemberDao->create($user);
-        } else if ($data["role"] === "PROJECT_MANAGER") {
-            $this->projectManagerDao->create($user);
-        }
     }
 
     public function login(array $data)
@@ -57,13 +51,10 @@ class UserService
                 "message" => "password is incorrect"
             ];
         }
-
-        // handler user login 
-        // store user in session
-
         return [
             "logged" => true,
-            "message" => "user logged in successfully"
+            "message" => "user logged in successfully",
+            "user" => $user
         ];
     }
 }

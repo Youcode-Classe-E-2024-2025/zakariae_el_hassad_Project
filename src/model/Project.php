@@ -6,9 +6,9 @@ class Project {
     private string $description;
     private bool $isPublic;
     private array $task;
-    public ?ProjectManager $projectManager;
+    public ?User $projectManager;
 
-    public function __construct(int $id = 0, string $name, string $description, bool $isPublic, ?ProjectManager $projectManager) {
+    public function __construct(int $id = 0, string $name, string $description, bool $isPublic, ?User $projectManager) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
@@ -55,10 +55,10 @@ class Project {
         $this->task = $task;
     }
 
-    public function getProjectManager() : ProjectManager{
+    public function getProjectManager() : User{
         return $this->projectManager;
     }
-    public function setProjectManager(ProjectManager $projectManager):void{
+    public function setProjectManager(User $projectManager):void{
         $this->projectManager = $projectManager;
     }
 }

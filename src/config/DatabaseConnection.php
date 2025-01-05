@@ -2,7 +2,7 @@
 
 class DatabaseConnection {
     private $host = "localhost";
-    private $db_name ="manager_project";
+    private $db_name ="manager_project_v3";
     private $username="root";
     private $password="";
     private $conn;

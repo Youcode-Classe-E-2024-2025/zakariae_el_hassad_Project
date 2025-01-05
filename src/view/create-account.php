@@ -34,12 +34,12 @@
           <img
             aria-hidden="true"
             class="object-cover w-full h-full dark:hidden"
-            src="<?= APP_ASSETS ?>img/forgot-password-office.jpeg"
+            src="./public/img/imgl.jpeg"
             alt="Office" />
           <img
             aria-hidden="true"
             class="hidden object-cover w-full h-full dark:block"
-            src="<?= APP_ASSETS ?>img/forgot-password-office-dark.jpeg"
+            src="./public/img/imgl.jpeg"
             alt="Office" />
         </div>
         <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
@@ -80,9 +80,9 @@
                   <span class="text-gray-700 dark:text-gray-400">
                     Confirm password
                   </span>
-                  <select name="role" id="role">
-                    <option value="PROJECT_MEMBER">member</option>
-                    <option value="PROJECT_MANAGER">manager</option>
+                  <select name="role_id" id="role">
+                    <option value="1">member</option>
+                    <option value="2">manager</option>
                   </select>
                 </label>
 
@@ -106,13 +106,12 @@
             </form>
 
             <hr class="my-8" />
-            <p class="mt-4">
-              <a
-                class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                href="./login.html">
-                Already have an account? Login
-              </a>
-            </p>
+            <form action="?action=login-form" method="POST">
+              <button
+                class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline">
+                Log In
+              </button>
+              </form>
           </div>
         </div>
       </div>

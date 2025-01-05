@@ -21,9 +21,27 @@ class ProjectDao
         ]);
     }
 
-    public function getAll()
+    public function getAll(int $id)
     {
-        $stmt = $this->connection->query("SELECT * FROM projects");
+        $stmt = $this->connection->prepare("SELECT * FROM projects WHERE project_manager_id = :id");
+
+
+        $stmt->execute(["id" => $id]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $projects = [];
+        foreach ($rows as $row) {
+            $project = new Project($row["id"], $row["name"], $row["description"], $row["is_public"], null);
+            array_push($projects, $project);
+        }
+
+        return $projects;
+    }
+
+
+    public function getPublicProjects()
+    {
+        $stmt = $this->connection->query("SELECT * FROM projects WHERE is_public is true");
 
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

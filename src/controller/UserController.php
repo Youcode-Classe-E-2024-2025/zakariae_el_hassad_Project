@@ -27,13 +27,20 @@ class UserController
 
     public function submitLogin()
     {
+        session_start();
+
         $response = $this->userService->login($_POST);
+
         if (!$response["logged"]) {
-            echo $response["message"];
-            header("location: http://localhost/zakariae_el_hassad_project/?action=login-form&message={$response['message']}");
-            return;
+            header("Location: http://localhost/zakariae_el_hassad_project/?action=login-form&message={$response['message']}");
+            exit();
         }
 
-        header("location: http://localhost/zakariae_el_hassad_project/?action=home");
+        session_reset();
+        $_SESSION['user'] = $response['user'];
+        $_SESSION['logged'] = true;
+
+        header("Location: http://localhost/zakariae_el_hassad_project/?action=home");
+        exit();
     }
 }

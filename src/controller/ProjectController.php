@@ -9,15 +9,27 @@ class ProjectController
         $this->projectService = new ProjectService();
     }
 
-    public function save() {
-        $this->projectService->save($_POST);
-        $projects = $this->projectService->getAll();
-        require_once APP_VIEWS . "forms.php";
+    private function checkLogin()
+    {
+        return isset($_SESSION['logged']);
     }
 
-    public function getAll() {
+    public function save()
+    {
+        $this->checkLogin();
+        $this->projectService->save($_POST);
+        header("Location: http://localhost/zakariae_el_hassad_project/?action=projects-list");
+        exit();
+    }
+
+    public function getAll()
+    {
+        if (!$this->checkLogin()) {
+            header("Location: http://localhost/zakariae_el_hassad_project/?action=404");
+            exit();
+        }
+
         $projects = $this->projectService->getAll();
         require_once APP_VIEWS . "forms.php";
     }
-    
 }

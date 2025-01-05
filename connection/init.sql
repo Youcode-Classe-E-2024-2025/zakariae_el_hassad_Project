@@ -1,24 +1,19 @@
-CREATE DATABASE manager_project;
+CREATE DATABASE manager_project_v2;
 
-USE manager_project;
+USE manager_project_v2;
+
+CREATE TABLE roles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE members (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
-CREATE TABLE project_managers (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    password VARCHAR(255) NOT NULL,
+    role_id INT NOT NULL,
+    FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
 CREATE TABLE projects (
@@ -27,7 +22,7 @@ CREATE TABLE projects (
     description TEXT,
     is_public BOOLEAN NOT NULL DEFAULT FALSE,
     project_manager_id INT NOT NULL,
-    FOREIGN KEY (project_manager_id) REFERENCES project_managers(id)
+    FOREIGN KEY (project_manager_id) REFERENCES users(id)
 );
 
 CREATE TABLE categories (
@@ -60,7 +55,7 @@ CREATE TABLE tasks (
     FOREIGN KEY (status_id) REFERENCES statuses(id),
     FOREIGN KEY (category_id) REFERENCES categories(id),
     FOREIGN KEY (project_id) REFERENCES projects(id),
-    FOREIGN KEY (member_id) REFERENCES members(id)
+    FOREIGN KEY (member_id) REFERENCES users(id)
 );
 
 CREATE TABLE task_tags (
@@ -70,3 +65,7 @@ CREATE TABLE task_tags (
     FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE,
     FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
 );
+
+
+INSERT INTO roles (id, name) VALUES (1, "MEMBER");
+INSERT INTO roles (id, name) VALUES (2, "MANAGER");
