@@ -10,7 +10,7 @@ class ProjectMemberDao
         $this->connection = $connectionHolder->connect();
     }
 
-    public function create(projectMember $projectMember)
+    public function create(User $projectMember)
     {
         $stmt = $this->connection->prepare("INSERT INTO members (user_id) VALUES( :user_id)");
         return $stmt->execute([
