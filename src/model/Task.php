@@ -5,7 +5,7 @@ class Task {
     private int $id;
     private string $titre;
     private string $description;
-    private Status $status;
+    private string $status;
     private Category $category;
     private dateTime $starteAt;
     private dateTime $completeAt;
@@ -13,7 +13,7 @@ class Task {
     private array $project;
     private ?User $ProjectMember;
 
-    public function __construct(int $id , string $titre , string $description ,Status $status, category $Category , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt , array $project , ?User $ProjectMember){
+    public function __construct(int $id , string $titre , string $description ,string $status, category $Category , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt , array $project , ?User $ProjectMember){
         $this->id = $id;
         $this->titre =$titre;
         $this->description = $description;
@@ -47,10 +47,10 @@ class Task {
         $this->description = $description;
     }
 
-    public function getStatus() : Status {
+    public function getStatus() : string {
         return $this->status;
     }
-    public function setStatus(Status $status) : void{
+    public function setStatus(string $status) : void{
         $this->status = $status;
     }
 

@@ -7,25 +7,30 @@ require_once "./src/config/DatabaseConnection.php";
 require_once "./src/model/Project.php";
 require_once "./src/model/Role.php";
 require_once "./src/model/User.php";
+require_once "./src/model/Category.php";
 
 # DAOs
 require_once "./src/dao/UserDao.php";
 require_once "./src/dao/ProjectDao.php";
+require_once "./src/dao/CategoryDao.php";
 
 # Services
 require_once "./src/service/UserService.php";
 require_once "./src/service/ProjectService.php";
+require_once "./src/service/CategoryService.php";
 
 # Controllers
 require_once "./src/controller/UserController.php";
 require_once "./src/controller/HomeController.php";
 require_once "./src/controller/ProjectController.php";
 require_once "./src/controller/Page404Controller.php";
+require_once "./src/controller/CategoryController.php";
 
 $userController = new UserController();
 $homeController = new HomeControlller();
 $projectController = new ProjectController();
 $page404Controller = new Page404Controller();
+$categoryController = new CategoryController();
 session_start();
 
 if (isset($_GET["action"])) {
@@ -55,6 +60,9 @@ if (isset($_GET["action"])) {
             break;
         case "save-project":
             $projectController->save();
+            break;
+        case "save-category":
+            $categoryController->save();
             break;
         case "404":
             $page404Controller->show404();

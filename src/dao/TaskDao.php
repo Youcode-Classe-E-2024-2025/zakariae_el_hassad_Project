@@ -10,7 +10,7 @@ class TaskDao {
     }
 
     public function create(Task $task){
-        $stmt = $this->connection->prepare("INSERT INTO tasks (titre , description , status_id , category_id, project_id , member_id , start_at , complete_at , created_at) VALUES(:titre , :description , :status_id , :category_id, :project_id , :member_id , :start_at , :complete_at , :created_at)");
+        $stmt = $this->connection->prepare("INSERT INTO tasks (titre , description , status_id , category_id, project_id , member_id , status , complete_at , created_at) VALUES(:titre , :description , :status_id , :category_id, :project_id , :member_id , :start_at , :complete_at , :created_at)");
         return $stmt->execute([
             "titre" => $task->getTitre(),
             "description" => $task->getDescription(),

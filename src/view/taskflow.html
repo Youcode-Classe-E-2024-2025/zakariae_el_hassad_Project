@@ -372,156 +372,179 @@
           </ul>
         </div>
       </header>
-      <main class="h-full pb-16 overflow-y-auto">
-        <div class="container px-6 mx-auto grid">
-          <div class="flex items-center justify-between my-6">
-            <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-              Forms
-            </h2>
-            <button type="button" onclick="toggleModalProject()"
-              class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-              Add Project
-            </button>
-
-            <button type="button" onclick="toggleModalCategory()"
-              class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-              Add Category
-            </button>
-          </div>
-
-
-          <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
-            <?php foreach ($projects as $project): ?>
-              <article
-                class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-                <h1 class="text-2xl font-bold text-white text-center mb-2"><?= $project->getName() ?></h1>
-                <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
-                  <time datetime="2022-10-10" class="block text-xs text-gray-500"> 10th Oct 2022 </time>
-                  <a href="#">
-                    <h3 class="mt-0.5 text-lg font-medium text-gray-900">
-                      <?= $project->getDescription() ?>
-                    </h3>
-                  </a>
-                  <div class="mt-4 flex flex-wrap gap-1">
-                    <span
-                      class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
-                      <?= $project->isPublic() ? "Public" : "Private" ?>
-                    </span>
-                  </div>
-                </div>
-              </article>
-            <?php endforeach; ?>
-          </div>
-
-          <!-- General elements -->
-          <section id="addModal" class="hidden fixed inset-0 flex items-start justify-center bg-black bg-opacity-50">
-            <div class="bg-white px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800 w-[50%] mt-10">
-              <div class="flex items-center justify-between my-6">
-                <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                  Add Project
-                </h2>
-                <button
-                  type="button"
-                  onclick="returnPage()"
-                  class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-                  *
-                </button>
-              </div>
-              <form action="?action=save-project" method="POST">
-                <label class="block text-sm">
-                  <span class="text-gray-700 dark:text-gray-400">Name</span>
-                  <input name="name"
-                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                    placeholder="Jane Doe" />
-                </label>
-
-                <label class="block mt-4 text-sm">
-                  <span class="text-gray-700 dark:text-gray-400">Description</span>
-                  <textarea name="description"
-                    class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                    rows="3"
-                    placeholder="Enter some long form content."></textarea>
-                </label>
-
-                <div class="mt-4 text-sm">
-                  <span class="text-gray-700 dark:text-gray-400">Account Type</span>
-                  <div class="mt-2">
-                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="visibility"
-                        value="public" />
-                      <span class="ml-2">public</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="visibility"
-                        value="private" />
-                      <span class="ml-2">privé</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="flex justify-center mt-4">
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    ADD
-                  </button>
-                </div>
-              </form>
-              </div>
-        </section>
-
-
-              <section id="addModalCategory" class="hidden fixed inset-0 flex items-start justify-center bg-black bg-opacity-50">
-                <div class="bg-white px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800 w-[50%] mt-10">
-                  <div class="flex items-center justify-between my-6">
-                    <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Add Category</h2>
-                    <button type="button" onclick="returnPage1()" class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-                      Close
-                    </button>
-                  </div>
-                  <form action="?action=save-category" method="POST">
-                    <label class="block text-sm">
-                      <span class="text-gray-700 dark:text-gray-400">name</span>
-                      <input name="name"
-                        class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-                        placeholder="Jane Doe" />
-                    </label>
-                    <label class="block mt-4 text-sm">
-                      <span class="text-gray-700 dark:text-gray-400">Description</span>
-                      <textarea name="desciption"
-                        class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        rows="3"
-                        placeholder="Enter some long form content."></textarea>
-                    </label>
-                    <div class="flex justify-center mt-4">
-                      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                      ADD
-                      </button>
-                    </div>
-                  </form>
-                </div>
-             </section>
-
-    <section>
-        <?php foreach ($Categorys as $Category): ?>
-            <div class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-                <h1><?= htmlspecialchars($Category->getName()) ?></h1>
-                <p><?= htmlspecialchars($Category->getDescription()) ?></p>
-            </div>
-        <?php endforeach; ?>
-    </section>
-
-
+      <main class=" flex items-center justify-between flex-col mb-4 p-4 ">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-4 p-4 w-[100%]">
+      <h1 class="text-2xl font-bold">Task List</h1>
+      <nav class="text-sm">
+        <a href="#" class="text-blue-400 hover:underline">Dashboard</a> /
+        <span class="text-gray-400">Task List</span>
+      </nav>
     </div>
-  </div>
-  </main>
-  </div>
-  </div>
 
-  <script src="./public/JS/froms.js"></script>
+    <!-- Task Section -->
+    <div class="bg-gray-800 rounded-lg p-4 w-[100%]">
+      <div class="flex items-center justify-between mb-4 ">
+        <h2 class="text-lg font-semibold">Tasks</h2>
+        <div class="flex items-center space-x-2">
+          <!-- Profile Avatars -->
+          <div class="flex -space-x-2">
+            <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://via.placeholder.com/32" alt="Avatar">
+            <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://via.placeholder.com/32" alt="Avatar">
+            <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://via.placeholder.com/32" alt="Avatar">
+            <div class="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-sm text-white border-2 border-gray-900">
+              +
+            </div>
+          </div>
+          <!-- Add Task Button -->
+          <button type="button"  onclick="toggleModalTask()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-semibold">
+            + Add task
+          </button>
+        </div>
+      </div>
+
+      <!-- To-Do Section -->
+      <div>
+        <h3 class="text-md font-semibold mb-2">To Do's (03)</h3>
+        <div class="space-y-4">
+          <!-- Task Card -->
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2">Task title</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center space-x-2">
+                <input type="checkbox" checked class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
+                <span class="line-through text-gray-400">Here is task one</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <input type="checkbox" class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
+                <span>Here is task Two</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <input type="checkbox" checked class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
+                <span class="line-through text-gray-400">Here is task Three</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Another Task Card -->
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2">Task title</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center space-x-2">
+                <input type="checkbox" class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
+                <span>Here is task one</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <input type="checkbox" checked class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
+                <span class="line-through text-gray-400">Here is task Two</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+</div>
+</div>
+
+
+<section id="addModalTask" class="hidden fixed inset-0 flex items-start justify-center bg-black bg-opacity-50">
+    <div class="bg-white px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800 w-[50%] mt-10">
+      <div class="flex items-center justify-between my-6">
+        <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Add task</h2>
+        <button type="button" onclick="returnPage2()" class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
+          Close
+        </button>
+      </div>
+      <form action="?action=save-task" method="POST">
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Tire</span>
+          <input name="titre"
+            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+            placeholder="Jane Doe" />
+        </label>
+        <label class="block mt-4 text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Description</span>
+          <textarea name="desciption"
+            class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+            rows="3"
+            placeholder="Enter some long form content."></textarea>
+        </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">date start</span>
+          <input name="start_at" type="date"
+            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+            placehtype="JJ/MM/AAAA" />
+            
+        </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400"> date complete</span>
+          <input name="complete_at" type="date"
+            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+            placeholder="JJ/MM/AAAA" />
+        </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Date created</span>
+          <input name="created_at" type="date"
+            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+            placeholder="JJ/MM/AAAA" />
+        </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">id project</span>
+          <input name="id_project" type="number"
+            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+            placeholder="1" />
+        </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">id category</span>
+          <input name="id_category" type="number"
+            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+            placeholder="1" />
+        </label>
+        <label class="block text-sm">
+          <span class="text-gray-700 dark:text-gray-400">id member</span>
+          <input name="member_id" type="number"
+            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+            placeholder="1" />
+        </label>
+        <div class="mt-4 text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Account Type</span>
+          <div class="mt-2">
+            <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
+              <input
+                type="radio"
+                class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                name="visibility"
+                value="public" />
+              <span class="ml-2">to do</span>
+            </label>
+            <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+              <input
+                type="radio"
+                class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                name="visibility"
+                value="private" />
+              <span class="ml-2">doine</span>
+            </label>
+            <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+              <input
+                type="radio"
+                class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                name="visibility"
+                value="private" />
+              <span class="ml-2">done</span>
+            </label>
+          </div>
+        <div class="flex justify-center mt-4">
+          <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          ADD
+          </button>
+        </div>
+      </form>
+    </div>
+ </section>
+
+ <script src="../../public/JS/froms.js"></script>
 </body>
 
 </html>

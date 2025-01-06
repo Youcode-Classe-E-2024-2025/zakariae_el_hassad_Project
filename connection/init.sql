@@ -31,11 +31,6 @@ CREATE TABLE categories (
     description TEXT
 );
 
-CREATE TABLE statuses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE tags (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
@@ -45,14 +40,13 @@ CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    status_id INT NOT NULL,
+    status ENUM('TODO', 'DOING', 'REVIEW', 'DONE') DEFAULT 'TODO' ,
     category_id INT NOT NULL,
     project_id INT NOT NULL,
     member_id INT NOT NULL,
     start_at DATETIME NOT NULL,
     complete_at DATETIME DEFAULT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (status_id) REFERENCES statuses(id),
     FOREIGN KEY (category_id) REFERENCES categories(id),
     FOREIGN KEY (project_id) REFERENCES projects(id),
     FOREIGN KEY (member_id) REFERENCES users(id)

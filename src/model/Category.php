@@ -4,14 +4,12 @@ class Category {
     private int $id;
     private string $name;
     private string $description;
-    private array $task;
 
-    public function __contruct(int $id , string $name , string $description , array $task){
+    public function __contruct(int $id=0, string $name, string $description) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
-        $this->task = $task ;
-    }
+    }    
 
     public function getId() : int{
         return $this->id;
@@ -34,10 +32,5 @@ class Category {
         $this->description = $description;
     }
 
-    public function getTasks() : array{
-        return $this->task;
-    }
-    public function setTasks(array $task) : void {
-        $this->task = $task;
-    }
+    
 }
