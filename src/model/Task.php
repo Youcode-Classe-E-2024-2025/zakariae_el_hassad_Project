@@ -5,25 +5,25 @@ class Task {
     private int $id;
     private string $titre;
     private string $description;
-    private string $status;
-    private Category $category;
+    private bool $isStatus;
+    private Category $iscategory;
     private dateTime $starteAt;
     private dateTime $completeAt;
     private dateTime $createdAt;
-    private array $project;
-    private ?User $ProjectMember;
+    private array $member_id;
+    public ?Project $projectid;
 
-    public function __construct(int $id , string $titre , string $description ,string $status, category $Category , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt , array $project , ?User $ProjectMember){
+    public function __construct(int $id = 0 , string $titre , string $description ,bool $isStatus, category $iscategory , dateTime $starteAt , dateTime $completeAt , dateTime $createdAt , array $member_id , ?Project $projectid){
         $this->id = $id;
         $this->titre =$titre;
         $this->description = $description;
-        $this->status = $status;
-        $this->category = $Category;
+        $this->isStatus = $isStatus;
+        $this->iscategory = $iscategory;
         $this->starteAt = $starteAt;
         $this->completeAt = $completeAt;
         $this->createdAt = $createdAt;
-        $this->project = $project;
-        $this->ProjectMember = $ProjectMember;
+        $this->member_id = $member_id;
+        $this->projectid = $projectid;
     }
 
     public function getId() : int {
@@ -47,18 +47,18 @@ class Task {
         $this->description = $description;
     }
 
-    public function getStatus() : string {
-        return $this->status;
+    public function getStatus() : bool {
+        return $this->isStatus;
     }
-    public function setStatus(string $status) : void{
-        $this->status = $status;
+    public function setStatus(bool $isStatus) : void{
+        $this->isStatus = $isStatus;
     }
 
     public function getCategory() : Category{
-        return $this->category;
+        return $this->iscategory;
     }
-    public function setCategory(Category $category) : void {
-        $this->category = $category;
+    public function setCategory(Category $iscategory) : void {
+        $this->iscategory = $iscategory;
     }
 
     public function getStarteAt() : dateTime {
@@ -82,18 +82,18 @@ class Task {
         $this->createdAt = $createdAt; 
     }
 
-    public function getProject() : array {
-        return $this->project;
+    public function getMember() : array{
+        return $this->member_id;
     }
-    public function setProject(array $project) : void{
-        $this->project = $project;
+    public function setMember(array $member_id) : void {
+        $this->member_id = $member_id;
     }
 
-    public function getMember() : User {
-        return $this->ProjectMember;
+    public function getProject() : Project {
+        return $this->projectid;
     }
-    public function setMember(User $ProjectMember) : void {
-        $this->ProjectMember = $ProjectMember;
+    public function setProject(Project $projectid) : void {
+        $this->projectid = $projectid;
     }
 
 }

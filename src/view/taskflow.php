@@ -15,9 +15,9 @@
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
     defer></script>
-  <script src="./public/JS/init-alpine.js"></script>
-  <script src="./public/JS/charts-lines.js" defer></script>
-  <script src="./public/JS/charts-pie.js" defer></script>
+  <script src="../../public/JS/init-alpine.js"></script>
+  <script src="../../public/JS/charts-lines.js" defer></script>
+  <script src="../../public/JS/charts-pie.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -372,8 +372,9 @@
           </ul>
         </div>
       </header>
-      <main class=" flex items-center justify-between flex-col mb-4 p-4 ">
+      <main class="h-full pb-16 overflow-y-auto">
     <!-- Header -->
+     <div class=" flex items-center justify-between flex-col mb-4 p-4 ">
     <div class="flex items-center justify-between mb-4 p-4 w-[100%]">
       <h1 class="text-2xl font-bold">Task List</h1>
       <nav class="text-sm">
@@ -405,44 +406,278 @@
 
       <!-- To-Do Section -->
       <div>
-        <h3 class="text-md font-semibold mb-2">To Do's (03)</h3>
-        <div class="space-y-4">
+        <h3 class="text-4xl font-semibold mb-2 text-white">To Do</h3>
+        <div class="space-y-4 bg-blue-800 p-4 mb-4 rounded-lg">
           <!-- Task Card -->
           <div class="bg-gray-700 p-4 rounded-lg">
-            <h4 class="text-sm font-semibold mb-2">Task title</h4>
-            <ul class="space-y-2">
-              <li class="flex items-center space-x-2">
-                <input type="checkbox" checked class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
-                <span class="line-through text-gray-400">Here is task one</span>
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
               </li>
-              <li class="flex items-center space-x-2">
-                <input type="checkbox" class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
-                <span>Here is task Two</span>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
               </li>
-              <li class="flex items-center space-x-2">
-                <input type="checkbox" checked class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
-                <span class="line-through text-gray-400">Here is task Three</span>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
               </li>
             </ul>
           </div>
+          
 
           <!-- Another Task Card -->
           <div class="bg-gray-700 p-4 rounded-lg">
-            <h4 class="text-sm font-semibold mb-2">Task title</h4>
-            <ul class="space-y-2">
-              <li class="flex items-center space-x-2">
-                <input type="checkbox" class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
-                <span>Here is task one</span>
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
               </li>
-              <li class="flex items-center space-x-2">
-                <input type="checkbox" checked class="w-4 h-4 text-blue-500 bg-gray-800 rounded focus:ring-2 focus:ring-blue-500">
-                <span class="line-through text-gray-400">Here is task Two</span>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
               </li>
             </ul>
           </div>
+          
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-4xl font-semibold mb-2 text-white">Doing</h3>
+        <div class="space-y-4 bg-blue-800 p-4 mb-4 rounded-lg">
+          <!-- Task Card -->
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+
+          <!-- Another Task Card -->
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-4xl font-semibold mb-2 text-white">Done</h3>
+        <div class="space-y-4 bg-blue-800 p-4 mb-12 rounded-lg">
+          <!-- Task Card -->
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+
+          <!-- Another Task Card -->
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-700 p-4 rounded-lg">
+            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
+            <ul class="space-y-2" id="tasks">
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task one</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task two</span>
+                </div>
+              </li>
+              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
+                <span class="text-white font-semibold">Zakariae</span>
+                <div class="flex items-center space-x-2">
+                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
+                  <span class="task-text text-gray-300">Here is task three</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
         </div>
       </div>
     </div>
+      
+    </div>
+  </div>
 </main>
 </div>
 </div>
@@ -514,7 +749,7 @@
               <input
                 type="radio"
                 class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                name="visibility"
+                name="todo"
                 value="public" />
               <span class="ml-2">to do</span>
             </label>
@@ -522,7 +757,7 @@
               <input
                 type="radio"
                 class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                name="visibility"
+                name="doine"
                 value="private" />
               <span class="ml-2">doine</span>
             </label>
@@ -530,7 +765,7 @@
               <input
                 type="radio"
                 class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                name="visibility"
+                name="done"
                 value="private" />
               <span class="ml-2">done</span>
             </label>
@@ -545,6 +780,21 @@
  </section>
 
  <script src="../../public/JS/froms.js"></script>
+ <script>
+  // Selection of all the checkboxes
+  const checkboxes = document.querySelectorAll('.task-checkbox');
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+      const text = this.nextElementSibling; // Gets the span next to the checkbox
+      if (this.checked) {
+        text.classList.add('line-through', 'text-gray-400'); // Add line-through class
+      } else {
+        text.classList.remove('line-through', 'text-gray-400'); // Remove line-through class
+      }
+    });
+  });
+</script>
 </body>
 
 </html>

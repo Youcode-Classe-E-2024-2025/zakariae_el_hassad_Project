@@ -12,7 +12,7 @@ class ProjectDao
 
     public function create(Project $project): bool
     {
-        $stmt = $this->connection->prepare("INSERT INTO projects (name, description, is_public, project_manager_id) VALUES (:name, :description, :is_public, :project_manager_id)");
+        $stmt = $this->connection->prepare("INSERT INTO projects (name, description, is_public, project_manager_id) VALUES (:name , :description, :is_public, :project_manager_id)");
         return $stmt->execute([
             "name" => $project->getName(),
             "description" => $project->getDescription(),

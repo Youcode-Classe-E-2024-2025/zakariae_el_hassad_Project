@@ -5,10 +5,9 @@ class Project {
     private string $name;
     private string $description;
     private bool $isPublic;
-    private array $task;
     public ?User $projectManager;
 
-    public function __construct(int $id = 0, string $name, string $description, bool $isPublic, ?User $projectManager) {
+    public function __construct(int $id = 0, string $name="", string $description= "", bool $isPublic= false  , ?User $projectManager = null) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
@@ -46,13 +45,6 @@ class Project {
 
     public function setIsPublic(bool $isPublic): void {
         $this->isPublic = $isPublic;
-    }
-
-    public function getTasks() : array{
-        return $this->task;
-    }
-    public function setTasks(array $task) : void {
-        $this->task = $task;
     }
 
     public function getProjectManager() : User{

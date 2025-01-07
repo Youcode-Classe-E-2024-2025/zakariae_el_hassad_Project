@@ -18,7 +18,7 @@ class CategoryController
     {
         $this->checkLogin();
         $this->categoryService->save($_POST);
-        header("Location: http://localhost/zakariae_el_hassad_project/?action=save-category");
+        header("Location: http://localhost/zakariae_el_hassad_project/?action=forms");
         exit();
     }
     
@@ -31,6 +31,7 @@ class CategoryController
         }
 
         $Categorys = $this->categoryService->getAllCategory();
+        var_dump($Categorys);
         require_once APP_VIEWS . "forms.php";
     }
 }   

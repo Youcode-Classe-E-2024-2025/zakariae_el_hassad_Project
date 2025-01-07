@@ -16,13 +16,13 @@ class CategoryService
         $projectManager = new User();
         $user = $_SESSION["user"];  
         $projectManager->setId($user->getId());
-
-        $Categorys = new Category(
+     
+        $category = new Category(
             name: $data["name"],
-            description: $data["description"]
+            description: $data["description"],
+            projectManager: $projectManager
         );
-        
-        $this->categoryDao->create($Categorys);
+        $this->categoryDao->create($category);
     }
 
     public function getAllCategory()

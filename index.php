@@ -8,16 +8,19 @@ require_once "./src/model/Project.php";
 require_once "./src/model/Role.php";
 require_once "./src/model/User.php";
 require_once "./src/model/Category.php";
+require_once "./src/model/Task.php";
 
 # DAOs
 require_once "./src/dao/UserDao.php";
 require_once "./src/dao/ProjectDao.php";
 require_once "./src/dao/CategoryDao.php";
+require_once "./src/dao/TaskDao.php";
 
 # Services
 require_once "./src/service/UserService.php";
 require_once "./src/service/ProjectService.php";
 require_once "./src/service/CategoryService.php";
+require_once "./src/service/TaskService.php";
 
 # Controllers
 require_once "./src/controller/UserController.php";
@@ -25,12 +28,14 @@ require_once "./src/controller/HomeController.php";
 require_once "./src/controller/ProjectController.php";
 require_once "./src/controller/Page404Controller.php";
 require_once "./src/controller/CategoryController.php";
+require_once "./src/controller/TaskController.php";
 
 $userController = new UserController();
 $homeController = new HomeControlller();
 $projectController = new ProjectController();
 $page404Controller = new Page404Controller();
 $categoryController = new CategoryController();
+$taskController = new TaskController();
 session_start();
 
 if (isset($_GET["action"])) {
@@ -63,6 +68,9 @@ if (isset($_GET["action"])) {
             break;
         case "save-category":
             $categoryController->save();
+            break;
+        case "todo_list":
+            $taskController->todo_list();
             break;
         case "404":
             $page404Controller->show404();

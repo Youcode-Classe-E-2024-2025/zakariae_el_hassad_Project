@@ -389,8 +389,9 @@
             </button>
           </div>
 
-
-          <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
+          <div class="bg-blue-800">
+          <form action="?action=todo_list" method="POST">
+          <button class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
             <?php foreach ($projects as $project): ?>
               <article
                 class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
@@ -411,7 +412,18 @@
                 </div>
               </article>
             <?php endforeach; ?>
+          </button>
+          </form>
           </div>
+
+          <section>
+        <?php foreach ($Categorys as $category): ?>
+            <div class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
+                <h1><?= htmlspecialchars($category->getName()) ?></h1>
+                <p><?= htmlspecialchars($category->getDescription()) ?></p>
+            </div>
+        <?php endforeach; ?>
+    </section>
 
           <!-- General elements -->
           <section id="addModal" class="hidden fixed inset-0 flex items-start justify-center bg-black bg-opacity-50">
@@ -491,7 +503,7 @@
                     </label>
                     <label class="block mt-4 text-sm">
                       <span class="text-gray-700 dark:text-gray-400">Description</span>
-                      <textarea name="desciption"
+                      <textarea name="description"
                         class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
                         rows="3"
                         placeholder="Enter some long form content."></textarea>
@@ -505,14 +517,6 @@
                 </div>
              </section>
 
-    <section>
-        <?php foreach ($Categorys as $Category): ?>
-            <div class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-                <h1><?= htmlspecialchars($Category->getName()) ?></h1>
-                <p><?= htmlspecialchars($Category->getDescription()) ?></p>
-            </div>
-        <?php endforeach; ?>
-    </section>
 
 
     </div>

@@ -4,11 +4,13 @@ class Category {
     private int $id;
     private string $name;
     private string $description;
+    public ?User $projectManager;
 
-    public function __contruct(int $id=0, string $name, string $description) {
+    public function __construct(int $id=0, string $name, string $description , ?User $projectManager) {
         $this->id = $id;
         $this->name = $name;
         $this->description = $description;
+        $this->projectManager = $projectManager;
     }    
 
     public function getId() : int{
@@ -30,6 +32,13 @@ class Category {
     }
     public function setDescription(string $description) :void{
         $this->description = $description;
+    }
+
+    public function getProjectManager() : User{
+        return $this->projectManager;
+    }
+    public function setProjectManager(User $projectManager):void{
+        $this->projectManager = $projectManager;
     }
 
     
