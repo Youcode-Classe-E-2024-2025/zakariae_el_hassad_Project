@@ -52,5 +52,5 @@ class ProjectDao
         }
 
         return $projects;
-    }
+    }    
 }

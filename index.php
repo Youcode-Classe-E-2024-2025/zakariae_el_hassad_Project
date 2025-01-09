@@ -54,6 +54,9 @@ if (isset($_GET["action"])) {
         case "login-submit":
             $userController->submitLogin();
             break;
+        case "logout":
+            $userController->logout();
+            break;
         case "home":
             $homeController->showHomePage();
             break;
@@ -70,7 +73,13 @@ if (isset($_GET["action"])) {
             $categoryController->save();
             break;
         case "todo_list":
-            $taskController->todo_list();
+            $taskController->getTasksByProject();
+            break;
+        case "save_todo_list":
+            $taskController->getAll();
+            break;
+        case "save_task":
+            $taskController->save();
             break;
         case "404":
             $page404Controller->show404();

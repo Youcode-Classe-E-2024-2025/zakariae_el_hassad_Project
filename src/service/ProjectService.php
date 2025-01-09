@@ -16,8 +16,9 @@ class ProjectService
             false :
             true;
 
+
         $projectManager = new User();
-        $user = $_SESSION["user"];  
+        $user = $_SESSION["user"];
         $projectManager->setId($user->getId());
 
         $Project = new Project(
@@ -36,7 +37,8 @@ class ProjectService
         return $this->projectDao->getAll($user->getId());
     }
 
-    public function getPublicProjects() {
+    public function getPublicProjects()
+    {
         return $this->projectDao->getPublicProjects();
     }
 }

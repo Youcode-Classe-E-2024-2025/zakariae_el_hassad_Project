@@ -30,4 +30,16 @@ class CategoryService
         $user = $_SESSION["user"];
         return $this->categoryDao->getAllCategory($user->getId());
     }
+
+    public function getCategoryById(int $id): ?Category
+    {
+        // Hna ghadi nverifyo wach category kayna wla la.
+        $category = $this->categoryDao->findById($id);
+
+        if ($category === null) {
+            throw new Exception("Category with ID $id not found.");
+        }
+
+        return $category;
+    }
 }

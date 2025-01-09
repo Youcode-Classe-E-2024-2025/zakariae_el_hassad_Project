@@ -40,7 +40,15 @@ class UserController
         $_SESSION['user'] = $response['user'];
         $_SESSION['logged'] = true;
 
-        header("Location: http://localhost/zakariae_el_hassad_project/?action=home");
+        header("Location: http://localhost/zakariae_el_hassad_project/?action=forms");
         exit();
+    }
+
+    public function logout(){
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: ?action=login-form");
+        exit;
     }
 }
