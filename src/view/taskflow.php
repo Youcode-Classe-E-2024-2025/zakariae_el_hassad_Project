@@ -434,7 +434,7 @@
                            </a>
                 
         
-                           <a href="?action=delete_task&task_id=<?= htmlspecialchars($task->getId()) ?>  &project_id=<?= htmlspecialchars($projectId) ?>"
+                           <a href="?action=delete_task&task_id=<?= htmlspecialchars($task->getId()) ?>&project_id=<?= htmlspecialchars($projectId) ?>"
                           class="text-white bg-red-500 hover:bg-red-600 p-2 rounded-full transition text-xs">
                           <i class="fas fa-trash">delet</i>
                       </a>

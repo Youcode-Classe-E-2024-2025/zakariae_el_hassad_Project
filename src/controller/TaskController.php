@@ -62,8 +62,8 @@ class TaskController
 
         $projectId = (int) $_GET['project_id'];
         $users = $this->userService->getAllByRoleId(1);
-    $categorys = $this->categoryService->categoryService($projectId);
-    $task = $this->taskService->getAllByProjectId($projectId);
-        require_once APP_VIEWS . "forms.php";
+        $categorys = $this->categoryService->categoryService($projectId);
+        $tasks = $this->taskService->getAllByProjectId($projectId);
+        require_once APP_VIEWS . "taskflow.php";
     }
 }
