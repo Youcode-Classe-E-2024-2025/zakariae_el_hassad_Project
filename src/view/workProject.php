@@ -58,6 +58,29 @@
           </li>
         </ul>
         <ul>
+        <?php if ($_SESSION['user']->getRole()->getId() == 2): ?>
+          <li class="relative px-6 py-3">
+            <a
+              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+              href="index.html">
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+              </svg>
+              <form action="?action=forms" method="POST">
+                <button class="ml-4">Ton project</button>
+              </form>
+            </a>
+          </li>
+          <?php endif; ?>
           <li class="relative px-6 py-3">
             <span
               class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
@@ -74,14 +97,14 @@
                 viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-              </svg>
-              <form action="?action=forms" method="POST">
-                <span class="ml-4">Ton project</span>
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                </svg>
+              <form action="?action=work-project" method="POST">
+                <button class="ml-4">work in project </button>
               </form>
             </a>
           </li>
-          <li class="relative px-6 py-3">
+          <!-- <li class="relative px-6 py-3">
             <a
               class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
               <svg
@@ -96,11 +119,11 @@
                 <path
                   d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
               </svg>
-              <form action="?action=work-project" method="POST">
-                <button class="ml-4">work in project  </button>
+              <form action="?action=404" method="POST">
+                <button class="ml-4">Cards</button>
               </form>
             </a>
-          </li>
+          </li> -->
           <li class="relative px-6 py-3">
             <a
               class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
@@ -387,157 +410,25 @@
             </button>
           </div>
 
-          <div class="">
-          <form action="?action=todo_list" method="POST" class="relative">
-    <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
-      <?php foreach ($projects as $project): ?>
-        <article
-          class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s] relative">
-          <div class="mt-4 flex flex-wrap gap-1 justify-end">
-            <span
-              class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
-              <?= htmlspecialchars($project->isPublic()) ? "Public" : "Private" ?>
-            </span>
-          </div>
-       
-          <h1 class="text-2xl font-bold text-white text-center mb-2"><?= htmlspecialchars($project->getName()) ?></h1>
-          <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
-            <time datetime="2022-10-10" class="block text-xs text-gray-500">10th Oct 2022</time>
-            <a href="#">
-              <h3 class="mt-0.5 text-lg font-medium text-gray-900">
-                <?= htmlspecialchars($project->getDescription()) ?>
-              </h3>
-            </a>
-            
-            <a href="?action=todo_list&project_id=<?= htmlspecialchars($project->getId()) ?>"
-                class="whitespace-nowrap rounded-full bg-blue-300 px-2.5 py-0.5 text-sm text-purple-900 mt-4 flex justify-center w-full hover:bg-purple-600 hover:text-white transition">
-                Les tâches du projet
-            </a>
-
-            <!-- Edit and Delete Icons Positioned Below the 'Les tâches du projet' Link -->
-            <div class="flex justify-between mt-4">
-                <!-- Edit Icon -->
-                <a href="?action=delete_project&project_id=<?= htmlspecialchars($project->getId()) ?>"
-                   class="text-white bg-green-500 hover:bg-green-600 p-2 rounded-full transition text-xs">
-                    <i class="fas fa-edit">edit</i>
-                </a>
-                
-        
-                <a  href="?action=delete_project&project_id=<?= htmlspecialchars($project->getId()) ?>" 
-                   class="text-white bg-red-500 hover:bg-red-600 p-2 rounded-full transition text-xs">
-                    <i class="fas fa-trash">delet</i>
-                </a>
-            </div>
-          </div>
-        </article>
-      <?php endforeach; ?>
-    </div>
-</form>
-</div>
-
 
 
           <section>
-        <?php foreach ($categorys as $category): ?>
-            <div class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-                <h1><?= htmlspecialchars($category->getName()) ?></h1>
-                <p><?= htmlspecialchars($category->getDescription()) ?></p>
-            </div>
-        <?php endforeach; ?>
+          <?php  if (isset($users) && is_array($users)): ?>
+        <?php foreach ($users as $user): ?>
+          <div class="hover:animate-background flex items-center justify-between rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-4 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
+    <h1 class="text-white font-semibold text-lg">Nom: <?= htmlspecialchars($user['name']); ?></h1>
+    <button 
+        class="bg-green-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-600 transition duration-300"
+    >
+        Invite
+    </button>
+</div>
+<br>
+            <?php endforeach; ?>
+<?php else: ?>
+    <p>No users available.</p>
+<?php endif; ?>
     </section>
-
-          <!-- General elements -->
-          <section id="addModal" class="hidden fixed inset-0 flex items-start justify-center bg-black bg-opacity-50">
-            <div class="bg-white px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800 w-[50%] mt-10">
-              <div class="flex items-center justify-between my-6">
-                <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                  Add Project
-                </h2>
-                <button
-                  type="button"
-                  onclick="returnPage()"
-                  class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-                  Close
-                </button>
-              </div>
-              <form action="?action=save-project" method="POST">
-                <label class="block text-sm">
-                  <span class="text-gray-700 dark:text-gray-400">Name</span>
-                  <input name="name"
-                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                    placeholder="Jane Doe" />
-                </label>
-
-                <label class="block mt-4 text-sm">
-                  <span class="text-gray-700 dark:text-gray-400">Description</span>
-                  <textarea name="description"
-                    class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                    rows="3"
-                    placeholder="Enter some long form content."></textarea>
-                </label>
-
-                <div class="mt-4 text-sm">
-                  <span class="text-gray-700 dark:text-gray-400">Account Type</span>
-                  <div class="mt-2">
-                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="visibility"
-                        value="public" />
-                      <span class="ml-2">public</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="visibility"
-                        value="private" />
-                      <span class="ml-2">privé</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="flex justify-center mt-4">
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                    ADD
-                  </button>
-                </div>
-              </form>
-              </div>
-        </section>
-
-
-              <section id="addModalCategory" class="hidden fixed inset-0 flex items-start justify-center bg-black bg-opacity-50">
-                <div class="bg-white px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800 w-[50%] mt-10">
-                  <div class="flex items-center justify-between my-6">
-                    <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Add Category</h2>
-                    <button type="button" onclick="returnPage1()" class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-                      Close
-                    </button>
-                  </div>
-                  <form action="?action=save-category" method="POST">
-                    <label class="block text-sm">
-                      <span class="text-gray-700 dark:text-gray-400">name</span>
-                      <input name="name"
-                        class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-                        placeholder="Jane Doe" />
-                    </label>
-                    <label class="block mt-4 text-sm">
-                      <span class="text-gray-700 dark:text-gray-400">Description</span>
-                      <textarea name="description"
-                        class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        rows="3"
-                        placeholder="Enter some long form content."></textarea>
-                    </label>
-                    <div class="flex justify-center mt-4">
-                      <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-                      ADD
-                      </button>
-                    </div>
-                  </form>
-                </div>
-             </section>
-
 
 
     </div>
@@ -546,7 +437,6 @@
   </div>
   </div>
 
-  <script src="./public/JS/froms.js"></script>
 </body>
 
 </html>

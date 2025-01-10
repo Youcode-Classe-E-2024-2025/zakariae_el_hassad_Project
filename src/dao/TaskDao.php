@@ -13,7 +13,7 @@ class TaskDao
 
     public function create(Task $task)
     {
-        $stmt = $this->connection->prepare("INSERT INTO tasks (title , description , category_id ,member_id, start_at , complete_at , created_at ,  status ,project_id) VALUES(:titre , :description , :category_id ,:member_id, :start_at , :complete_at , :created_at ,  :status , :project_id)");
+        $stmt = $this->connection->prepare("INSERT INTO tasks (title , description , category_id ,member_id, start_at , complete_at , created_at ,  status , tag ,project_id) VALUES(:titre , :description , :category_id ,:member_id, :start_at , :complete_at , :created_at ,  :status , :tag , :project_id)");
         return $stmt->execute([
             "titre" => $task->getTitre(),
             "description" => $task->getDescription(),
@@ -23,6 +23,7 @@ class TaskDao
             "complete_at" => $task->getCompleteAt() ? $task->getCompleteAt()->format('Y-m-d H:i:s') : null,
             "created_at" => $task->getCreatedAt() ? $task->getCreatedAt()->format('Y-m-d H:i:s') : null,
             "status" => $task->getStatus(),
+            "tag" => $task->getTag(),
             "project_id" => $task->getProject()->getId()
         ]);
     }
@@ -43,6 +44,7 @@ class TaskDao
                 $row["title"], 
                 $row["description"], 
                 $row["status"],
+                $row["tag"],
                 $category, 
                 $row["start_at"] ? new \DateTime($row["start_at"]) : null, 
                 $row["complete_at"] ? new \DateTime($row["complete_at"]) : null,
@@ -56,4 +58,6 @@ class TaskDao
 
         return $tasks;
     }
+
+   
 }

@@ -41,4 +41,9 @@ class ProjectService
     {
         return $this->projectDao->getPublicProjects();
     }
+
+    public function delete($id) {
+        return $this->projectDao->getDelete($id);
+    }
+    
 }

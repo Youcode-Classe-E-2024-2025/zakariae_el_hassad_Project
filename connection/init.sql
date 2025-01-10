@@ -40,7 +40,8 @@ CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    status ENUM('TODO', 'DOING', 'REVIEW', 'DONE') DEFAULT 'TODO' ,
+    status ENUM('TODO', 'DOING', 'DONE') DEFAULT 'TODO' ,
+    tag ENUM('URGENT', 'MEDIUM-PRIORITY', 'LOW-PRIORITY') DEFAULT 'MEDIUM-PRIORITY' ,
     category_id INT NOT NULL,
     project_id INT NOT NULL,
     member_id INT NOT NULL,
@@ -63,3 +64,4 @@ CREATE TABLE task_tags (
 
 INSERT INTO roles (id, name) VALUES (1, "MEMBER");
 INSERT INTO roles (id, name) VALUES (2, "MANAGER");
+

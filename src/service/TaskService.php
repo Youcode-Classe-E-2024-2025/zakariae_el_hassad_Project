@@ -18,10 +18,19 @@ class TaskService
 
         $category = $this->categoryService->getCategoryById((int)$data["isCategory"]);
 
-        $isStatus = ($data["status"] === "todo") ? false : 
-              (($data["status"] === "doing") ? true : 
-              (($data["status"] === "done") ? true : false)); 
+        $allowedStatuses = ["TODO", "DOING", "REVIEW", "DONE"];
+        $status = strtoupper($data["status"]);
+        $allowedTag = ["URGENT", "MEDIUM-PRIORITY", "LOW-PRIORITY"];
+        $tag = strtoupper($data["tag"]);
+        if (!in_array($status, $allowedStatuses) && !in_array($tag, $allowedTag)) {
+        throw new InvalidArgumentException("Invalid status value.");
+       } 
 
+    //    $allowedTag = ["URGENT", "MEDIUM-PRIORITY", "LOW-PRIORITY"];
+    //     $tag = strtoupper($data["status"]);
+    //     if (!in_array($tag, $allowedTag)) {
+    //     throw new InvalidArgumentException("Invalid status value.");
+    //    } 
             //   if (!isset($_SESSION["project"])) {
             //     header("Location: http://localhost/zakariae_el_hassad_project/?action=404");
             //     exit();
@@ -36,14 +45,16 @@ class TaskService
         $task = new Task(
             titre: $data["titre"],
             description : $data["description"],
-            isStatus : $isStatus,
+            status: $status, 
+            tag: $tag, 
             iscategory: $category,
             member_id: $data["member_id"],
             starteAt: new DateTime($data["start_at"]),  
             completeAt: new DateTime($data["complete_at"]),  
             createdAt: new DateTime($data["created_at"]),
             projectid: $project
-        );        
+        );  
+             
 
         
         $this->taskDao->create($task);

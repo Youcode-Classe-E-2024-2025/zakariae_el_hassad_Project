@@ -43,4 +43,15 @@ class UserDao
             role: $role
         );
     }
+
+    public function getAllByRoleId($roleId)
+    {
+        $query = "SELECT * FROM users WHERE role_id = :role_id";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindParam(':role_id', $roleId, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

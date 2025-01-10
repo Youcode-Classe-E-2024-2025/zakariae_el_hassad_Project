@@ -25,7 +25,7 @@ class CategoryService
         $this->categoryDao->create($category);
     }
 
-    public function getAllCategory()
+    public function categoryService()
     {
         $user = $_SESSION["user"];
         return $this->categoryDao->getAllCategory($user->getId());
@@ -33,7 +33,6 @@ class CategoryService
 
     public function getCategoryById(int $id): ?Category
     {
-        // Hna ghadi nverifyo wach category kayna wla la.
         $category = $this->categoryDao->findById($id);
 
         if ($category === null) {

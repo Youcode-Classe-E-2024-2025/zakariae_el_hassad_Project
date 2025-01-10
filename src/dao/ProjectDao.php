@@ -52,5 +52,14 @@ class ProjectDao
         }
 
         return $projects;
-    }    
+    }  
+    
+    public function getDelete($id) {
+        $stmt = $this->connection->prepare("DELETE FROM tasks WHERE project_id = ?");
+        $stmt->execute([$id]);
+    
+        $stmt = $this->connection->prepare("DELETE FROM projects WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
+    
 }

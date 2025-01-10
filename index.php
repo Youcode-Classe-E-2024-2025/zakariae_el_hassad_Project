@@ -57,6 +57,9 @@ if (isset($_GET["action"])) {
         case "logout":
             $userController->logout();
             break;
+        case "work-project":
+            $userController->getAll();
+            break;
         case "home":
             $homeController->showHomePage();
             break;
@@ -68,7 +71,10 @@ if (isset($_GET["action"])) {
             break;
         case "save-project":
             $projectController->save();
-            break;
+            break; 
+        case "delete_project":
+            $projectController->delete();
+            break;   
         case "save-category":
             $categoryController->save();
             break;

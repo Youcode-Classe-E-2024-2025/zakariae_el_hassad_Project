@@ -20,6 +20,7 @@ class TaskController
             "isCategory" => $_POST["isCategory"],
             "member_id" => $_POST["member_id"],
             "status" => $_POST["todo"],
+            "tag" => $_POST["MEDIUM-PRIORITY"],
             "projectid" => $_GET["project_id"]
         ];
         $this->taskService->save($request);

@@ -6,7 +6,8 @@
         private int $id;
         private string $titre;
         private string $description;
-        private bool $isStatus;
+        private string $status;
+        private string $tag;
         private Category $iscategory;
         private DateTime $starteAt;
         private DateTime $completeAt;
@@ -18,7 +19,8 @@
             int $id = 0,
             string $titre = "",
             string $description = "",
-            bool $isStatus,
+            string $status = "TODO", 
+            string $tag = "MEDIUM-PRIORITY", 
             Category $iscategory,
             DateTime|string $starteAt,
             DateTime|string $completeAt,
@@ -29,7 +31,8 @@
             $this->id = $id;
             $this->titre = $titre;
             $this->description = $description;
-            $this->isStatus = $isStatus;
+            $this->status = strtoupper($status);
+            $this->tag = strtoupper($tag);
             $this->iscategory = $iscategory;
             $this->starteAt = $starteAt instanceof DateTime ? $starteAt : new DateTime($starteAt);
             $this->completeAt = $completeAt instanceof DateTime ? $completeAt : new DateTime($completeAt);
@@ -65,13 +68,22 @@
             $this->description = $description;
         }
 
-        public function getStatus(): bool
+        public function getStatus(): string
         {
-            return $this->isStatus;
+            return $this->status;
         }
-        public function setStatus(bool $isStatus): void
+        public function setStatus(string $status): void
         {
-            $this->isStatus = $isStatus;
+            $this->status = $status;
+        }
+
+        public function getTag(): string
+        {
+            return $this->tag;
+        }
+        public function setTag(string $tag): void
+        {
+            $this->tag = $tag;
         }
 
         public function getCategory(): Category

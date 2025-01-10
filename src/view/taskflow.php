@@ -373,22 +373,19 @@
         </div>
       </header>
       <main class="h-full pb-16 overflow-y-auto">
-    <!-- Header -->
      <div class=" flex items-center justify-between flex-col mb-4 p-4 ">
     <div class="flex items-center justify-between mb-4 p-4 w-[100%]">
-      <h1 class="text-2xl font-bold">Task List</h1>
+      <h1 class="text-3xl font-bold text-gray-500">Task List</h1>
       <nav class="text-sm">
-        <a href="#" class="text-blue-400 hover:underline">Dashboard</a> /
-        <span class="text-gray-400">Task List</span>
+        <a href="?action=home" class="text-blue-400 hover:underline">Dashboard</a>
+        <span class="text-white">/</span>   
+        <a href="?action=forms" class="text-blue-400 hover:underline">Task List</a>
       </nav>
     </div>
-
-    <!-- Task Section -->
     <div class="bg-gray-800 rounded-lg p-4 w-[100%]">
       <div class="flex items-center justify-between mb-4 ">
         <h2 class="text-lg font-semibold">Tasks</h2>
         <div class="flex items-center space-x-2">
-          <!-- Profile Avatars -->
           <div class="flex -space-x-2">
             <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://via.placeholder.com/32" alt="Avatar">
             <img class="w-8 h-8 rounded-full border-2 border-gray-900" src="https://via.placeholder.com/32" alt="Avatar">
@@ -397,63 +394,133 @@
               +
             </div>
           </div>
-          <!-- Add Task Button -->
           <button type="button"  onclick="toggleModalTask()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-semibold">
             + Add task
           </button>
         </div>
-      </div>
-
-      <!-- To-Do Section -->
-
-
-  
+      </div>  
 
       <div>
-        <h3 class="text-4xl font-semibold mb-2 text-white">To Do</h3>
-        <div class="space-y-4 bg-blue-800 p-4 mb-4 rounded-lg">
-          <!-- Task Card -->
-          <?php foreach ($tasks as $task): ?>
-          <div class="bg-gray-700 p-4 rounded-lg">
-            <h4 class="text-sm font-semibold mb-2 text-center text-white"><?= htmlspecialchars($task->getTitre()) ?></h4>
-            <ul class="space-y-2" id="tasks">
-              <li class="flex justify-between items-center bg-gray-800 p-3 rounded-lg">
-                <span class="text-white font-semibold"><?= htmlspecialchars($task->getDescription()) ?></span>
-                <div class="flex items-center space-x-2">
-                  <input type="checkbox" class="task-checkbox w-4 h-4 text-blue-500 rounded focus:ring-2 focus:ring-blue-500">
-                  <span class="task-text text-gray-300">zdhbhvsqvqsvxqv</span>
+    <!-- To Do -->
+    <h3 class="text-4xl font-semibold mb-2 text-white">To Do</h3>
+    <div class="space-y-6 bg-gradient-to-b from-gray-500 to-blue-800 p-6 rounded-lg shadow-lg">
+        <?php foreach ($tasks as $task): ?>
+            <?php if ($task->getStatus() === 'TODO'): ?>
+                <?php 
+                    $tag = $task->getTag(); 
+                    $circleColor = match ($tag) {
+                        'URGENT' => 'bg-red-500', 
+                        'MEDIUM-PRIORITY' => 'bg-yellow-500', 
+                        'LOW-PRIORITY' => 'bg-green-500', 
+                        default => 'bg-gray-400', 
+                    };
+                ?>
+                <div class="task-card bg-opacity-30 backdrop-blur-md bg-gray-700 p-6 rounded-xl shadow-xl transform transition-all duration-500 hover:scale-105 hover:bg-gray-800">
+                    <h4 class="text-2xl font-bold text-center text-white mb-4"><?= htmlspecialchars($task->getTitre()) ?></h4>
+                    <p class="text-gray-300 text-center mb-4">
+                        <?= htmlspecialchars($task->getDescription()) ?>
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <span class="font-semibold text-gray-200">Créé le :</span>
+                        <?= htmlspecialchars($task->getCreatedAt()->format('Y-m-d H:i:s')) ?>
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        <span class="font-semibold text-gray-200">Membre :bzbdizedzebduizd
+                    </p>
+                    <div class="mt-6 flex justify-center">
+                        <input type="checkbox" class="task-checkbox w-6 h-6 text-blue-500 border-2 border-gray-400 rounded-full focus:ring-4 focus:ring-blue-500">
+                    </div>
+                    <div class="floating-decorator absolute top-2 right-2 w-6 h-6 <?= $circleColor ?> rounded-full animate-pulse"></div>
+                    <div class="floating-decorator absolute bottom-2 left-2 w-4 h-4 <?= $circleColor ?> rounded-full animate-pulse"></div>
                 </div>
-              </li>
-            </ul>
-          </div>
-          <?php endforeach; ?>     
-        </div>
-      </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
 
-      <div>
-        <h3 class="text-4xl font-semibold mb-2 text-white">Doing</h3>
-        <div class="space-y-4 bg-blue-800 p-4 mb-4 rounded-lg">
-          <!-- Task Card -->
-          <div class="bg-gray-700 p-4 rounded-lg">
-            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
-            <ul class="space-y-2" id="tasks">
-            </ul>
-          </div>        
-        </div>
-      </div>
 
-      <div>
-        <h3 class="text-4xl font-semibold mb-2 text-white">Done</h3>
-        <div class="space-y-4 bg-blue-800 p-4 mb-12 rounded-lg">
-          <!-- Task Card -->
-          <div class="bg-gray-700 p-4 rounded-lg">
-            <h4 class="text-sm font-semibold mb-2 text-center text-white">Task title</h4>
-            <ul class="space-y-2" id="tasks">
+<div>
+    <!-- To Do -->
+    <h3 class="text-4xl font-semibold mb-2 text-white">To Do</h3>
+    <div class="space-y-6 bg-gradient-to-b from-gray-500 to-blue-800 p-6 rounded-lg shadow-lg">
+        <?php foreach ($tasks as $task): ?>
+            <?php if ($task->getStatus() === 'DOING'): ?>
+                <?php 
+                    $tag = $task->getTag(); 
+                    $circleColor = match ($tag) {
+                      'URGENT' => 'bg-red-500', 
+                      'MEDIUM-PRIORITY' => 'bg-yellow-500', 
+                      'LOW-PRIORITY' => 'bg-green-500', 
+                        default => 'bg-gray-400', 
+                    };
+                ?>
+                <div class="task-card bg-opacity-30 backdrop-blur-md bg-gray-700 p-6 rounded-xl shadow-xl transform transition-all duration-500 hover:scale-105 hover:bg-gray-800">
+                    <h4 class="text-2xl font-bold text-center text-white mb-4"><?= htmlspecialchars($task->getTitre()) ?></h4>
+                    <p class="text-gray-300 text-center mb-4">
+                        <?= htmlspecialchars($task->getDescription()) ?>
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <span class="font-semibold text-gray-200">Créé le :</span>
+                        <?= htmlspecialchars($task->getCreatedAt()->format('Y-m-d H:i:s')) ?>
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        <span class="font-semibold text-gray-200">Membre :bzbdizedzebduizd
+                    </p>
+                    <div class="mt-6 flex justify-center">
+                        <input type="checkbox" class="task-checkbox w-6 h-6 text-blue-500 border-2 border-gray-400 rounded-full focus:ring-4 focus:ring-blue-500">
+                    </div>
+                    <div class="floating-decorator absolute top-2 right-2 w-6 h-6 <?= $circleColor ?> rounded-full animate-pulse"></div>
+                    <div class="floating-decorator absolute bottom-2 left-2 w-4 h-4 <?= $circleColor ?> rounded-full animate-pulse"></div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
 
-            </ul>
-          </div>    
-        </div>
-      </div>
+
+<div>
+    <!-- To Do -->
+    <h3 class="text-4xl font-semibold mb-2 text-white">To Do</h3>
+    <div class="space-y-6 bg-gradient-to-b from-gray-500 to-blue-800 p-6 rounded-lg shadow-lg">
+        <?php foreach ($tasks as $task): ?>
+            <?php if ($task->getStatus() === 'DONE'): ?>
+                <?php 
+                    $tag = $task->getTag(); 
+                    $circleColor = match ($tag) {
+                      'URGENT' => 'bg-red-500', 
+                      'MEDIUM-PRIORITY' => 'bg-yellow-500', 
+                      'LOW-PRIORITY' => 'bg-green-500', 
+                        default => 'bg-gray-400', 
+                    };
+                ?>
+                <div class="task-card bg-opacity-30 backdrop-blur-md bg-gray-700 p-6 rounded-xl shadow-xl transform transition-all duration-500 hover:scale-105 hover:bg-gray-800">
+                    <h4 class="text-2xl font-bold text-center text-white mb-4"><?= htmlspecialchars($task->getTitre()) ?></h4>
+                    <p class="text-gray-300 text-center mb-4">
+                        <?= htmlspecialchars($task->getDescription()) ?>
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <span class="font-semibold text-gray-200">Créé le :</span>
+                        <?= htmlspecialchars($task->getCreatedAt()->format('Y-m-d H:i:s')) ?>
+                    </p>
+                    <p class="text-sm text-gray-400">
+                        <span class="font-semibold text-gray-200">Membre :bzbdizedzebduizd
+                    </p>
+                    <div class="mt-6 flex justify-center">
+                        <input type="checkbox" class="task-checkbox w-6 h-6 text-blue-500 border-2 border-gray-400 rounded-full focus:ring-4 focus:ring-blue-500">
+                    </div>
+                    <div class="floating-decorator absolute top-2 right-2 w-6 h-6 <?= $circleColor ?> rounded-full animate-pulse"></div>
+                    <div class="floating-decorator absolute bottom-2 left-2 w-4 h-4 <?= $circleColor ?> rounded-full animate-pulse"></div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+   
+    
+      
+    </div>
+  </div>
     </div>
     
       
@@ -543,6 +610,35 @@
                         name="todo"
                         value="done" />
                       <span class="ml-2">done</span>
+                    </label>
+                  </div>
+
+                  <div class="mt-4 text-sm">
+          <span class="text-gray-700 dark:text-gray-400">Account Type</span>
+          <div class="mt-2">
+                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
+                      <input
+                        type="radio"
+                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                        name="MEDIUM-PRIORITY"
+                        value="URGENT" />
+                      <span class="ml-2">URGENT</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                      <input
+                        type="radio"
+                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                        name="MEDIUM-PRIORITY"
+                        value="MEDIUM-PRIORITY" />
+                      <span class="ml-2">MEDIUM-PRIORITY</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                      <input
+                        type="radio"
+                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                        name="MEDIUM-PRIORITY"
+                        value="LOW-PRIORITY" />
+                      <span class="ml-2">LOW-PRIORITY</span>
                     </label>
                   </div>
         <div class="flex justify-center mt-4">
