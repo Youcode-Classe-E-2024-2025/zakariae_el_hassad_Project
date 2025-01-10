@@ -14,51 +14,48 @@ class TaskService
     }
 
     public function save(array $data)
-    {
+{
+    // Fetch the category
+    $category = $this->categoryService->getCategoryById((int)$data["isCategory"]);
 
-        $category = $this->categoryService->getCategoryById((int)$data["isCategory"]);
-
-        $allowedStatuses = ["TODO", "DOING", "REVIEW", "DONE"];
-        $status = strtoupper($data["status"]);
-        $allowedTag = ["URGENT", "MEDIUM-PRIORITY", "LOW-PRIORITY"];
-        $tag = strtoupper($data["tag"]);
-        if (!in_array($status, $allowedStatuses) && !in_array($tag, $allowedTag)) {
+    // Validate status
+    $allowedStatuses = ["TODO", "DOING", "DONE"];
+    $status = strtoupper($data["status"] ?? "TODO");
+    if (!in_array($status, $allowedStatuses)) {
         throw new InvalidArgumentException("Invalid status value.");
-       } 
-
-    //    $allowedTag = ["URGENT", "MEDIUM-PRIORITY", "LOW-PRIORITY"];
-    //     $tag = strtoupper($data["status"]);
-    //     if (!in_array($tag, $allowedTag)) {
-    //     throw new InvalidArgumentException("Invalid status value.");
-    //    } 
-            //   if (!isset($_SESSION["project"])) {
-            //     header("Location: http://localhost/zakariae_el_hassad_project/?action=404");
-            //     exit();
-            // }
-            
-
-        
-        $project = new Project();
-        $project->setId ((int) $_GET["project_id"]);
-        
-        
-        $task = new Task(
-            titre: $data["titre"],
-            description : $data["description"],
-            status: $status, 
-            tag: $tag, 
-            iscategory: $category,
-            member_id: $data["member_id"],
-            starteAt: new DateTime($data["start_at"]),  
-            completeAt: new DateTime($data["complete_at"]),  
-            createdAt: new DateTime($data["created_at"]),
-            projectid: $project
-        );  
-             
-
-        
-        $this->taskDao->create($task);
     }
+
+    // Validate tag
+    $allowedTags = ["URGENT", "MEDIUM-PRIORITY", "LOW-PRIORITY"];
+    $tag = strtoupper($data["tag"] ?? "MEDIUM-PRIORITY");
+    if (!in_array($tag, $allowedTags)) {
+        throw new InvalidArgumentException("Invalid tag value.");
+    }
+
+    // Validate project
+    if (!isset($_GET["project_id"])) {
+        throw new RuntimeException("Project ID is required.");
+    }
+
+    $project = new Project();
+    $project->setId((int)$_GET["project_id"]);
+
+    $task = new Task(
+        id: $data["id"] ?? 0, 
+        titre: $data["titre"],
+        description: $data["description"],
+        status: $status,
+        tag: $tag,
+        iscategory: $category,
+        member_id: $data["member_id"],
+        starteAt: new DateTime($data["start_at"]),
+        completeAt: new DateTime($data["complete_at"]),
+        createdAt: new DateTime($data["created_at"]),
+        projectid: $project
+    );
+
+    $this->taskDao->create($task);
+}
 
     public function getAll()
     {
@@ -75,5 +72,8 @@ class TaskService
     return $this->taskDao->getAllTaskDeProject($projectId);
 }
 
+public function delete($id) {
+    return $this->taskDao->getDelete($id);
+}
 
 }

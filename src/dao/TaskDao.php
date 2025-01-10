@@ -59,5 +59,11 @@ class TaskDao
         return $tasks;
     }
 
+
+    public function getDelete($id) {
+        $stmt = $this->connection->prepare("DELETE FROM tasks WHERE id = ?");
+        $stmt->execute([$id]);
+
+    }
    
 }

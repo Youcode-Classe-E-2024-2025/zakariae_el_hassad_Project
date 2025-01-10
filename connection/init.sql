@@ -28,7 +28,9 @@ CREATE TABLE projects (
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    description TEXT
+    description TEXT,
+    project_manager_id INT NOT NULL,
+    FOREIGN KEY (project_manager_id) REFERENCES users(id)
 );
 
 CREATE TABLE tags (

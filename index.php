@@ -87,6 +87,9 @@ if (isset($_GET["action"])) {
         case "save_task":
             $taskController->save();
             break;
+        case "delete_task":
+            $taskController->delete();
+            break;
         case "404":
             $page404Controller->show404();
             break;

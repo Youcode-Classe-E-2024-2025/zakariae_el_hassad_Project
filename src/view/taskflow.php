@@ -37,8 +37,7 @@
         <ul class="mt-6">
           <li class="relative px-6 py-3">
             <a
-              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="index.html">
+              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
               <svg
                 class="w-5 h-5"
                 aria-hidden="true"
@@ -83,8 +82,7 @@
           </li>
           <li class="relative px-6 py-3">
             <a
-              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="cards.html">
+              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
               <svg
                 class="w-5 h-5"
                 aria-hidden="true"
@@ -104,8 +102,7 @@
           </li>
           <li class="relative px-6 py-3">
             <a
-              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-              href="cards.html">
+              class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
               <svg
                 class="w-5 h-5"
                 aria-hidden="true"
@@ -425,10 +422,22 @@
                         <?= htmlspecialchars($task->getCreatedAt()->format('Y-m-d H:i:s')) ?>
                     </p>
                     <p class="text-sm text-gray-400">
-                        <span class="font-semibold text-gray-200">Membre :bzbdizedzebduizd
+                        <span class="font-semibold text-gray-200">Membre :<?=$task->getMember()?>
                     </p>
                     <div class="mt-6 flex justify-center">
                         <input type="checkbox" class="task-checkbox w-6 h-6 text-blue-500 border-2 border-gray-400 rounded-full focus:ring-4 focus:ring-blue-500">
+                    </div>
+                    <div class="flex justify-between mt-4">
+                          <a href=""
+                          class="text-white bg-green-500 hover:bg-green-600 p-2 rounded-full transition text-xs">
+                          <i class="fas fa-edit">edit</i>
+                           </a>
+                
+        
+                           <a href="?action=delete_task&task_id=<?= htmlspecialchars($task->getId()) ?>  &project_id=<?= htmlspecialchars($projectId) ?>"
+                          class="text-white bg-red-500 hover:bg-red-600 p-2 rounded-full transition text-xs">
+                          <i class="fas fa-trash">delet</i>
+                      </a>
                     </div>
                     <div class="floating-decorator absolute top-2 right-2 w-6 h-6 <?= $circleColor ?> rounded-full animate-pulse"></div>
                     <div class="floating-decorator absolute bottom-2 left-2 w-4 h-4 <?= $circleColor ?> rounded-full animate-pulse"></div>
@@ -464,10 +473,22 @@
                         <?= htmlspecialchars($task->getCreatedAt()->format('Y-m-d H:i:s')) ?>
                     </p>
                     <p class="text-sm text-gray-400">
-                        <span class="font-semibold text-gray-200">Membre :bzbdizedzebduizd
+                        <span class="font-semibold text-gray-200">Membre :<?=$task->getMember()?>
                     </p>
                     <div class="mt-6 flex justify-center">
                         <input type="checkbox" class="task-checkbox w-6 h-6 text-blue-500 border-2 border-gray-400 rounded-full focus:ring-4 focus:ring-blue-500">
+                    </div>
+                    <div class="flex justify-between mt-4">
+                          <a href=""
+                          class="text-white bg-green-500 hover:bg-green-600 p-2 rounded-full transition text-xs">
+                          <i class="fas fa-edit">edit</i>
+                           </a>
+                
+        
+                           <a href="?action=delete_task&task_id=<?= htmlspecialchars($task->getId()) ?>  &project_id=<?= htmlspecialchars($projectId) ?>"
+                          class="text-white bg-red-500 hover:bg-red-600 p-2 rounded-full transition text-xs">
+                          <i class="fas fa-trash">delet</i>
+                      </a>
                     </div>
                     <div class="floating-decorator absolute top-2 right-2 w-6 h-6 <?= $circleColor ?> rounded-full animate-pulse"></div>
                     <div class="floating-decorator absolute bottom-2 left-2 w-4 h-4 <?= $circleColor ?> rounded-full animate-pulse"></div>
@@ -503,10 +524,22 @@
                         <?= htmlspecialchars($task->getCreatedAt()->format('Y-m-d H:i:s')) ?>
                     </p>
                     <p class="text-sm text-gray-400">
-                        <span class="font-semibold text-gray-200">Membre :bzbdizedzebduizd
+                        <span class="font-semibold text-gray-200">Membre : <?=$task->getMember()?>
                     </p>
                     <div class="mt-6 flex justify-center">
                         <input type="checkbox" class="task-checkbox w-6 h-6 text-blue-500 border-2 border-gray-400 rounded-full focus:ring-4 focus:ring-blue-500">
+                    </div>
+                    <div class="flex justify-between mt-4">
+                          <a href=""
+                          class="text-white bg-green-500 hover:bg-green-600 p-2 rounded-full transition text-xs">
+                          <i class="fas fa-edit">edit</i>
+                           </a>
+                
+        
+                           <a href="?action=delete_task&task_id=<?= htmlspecialchars($task->getId()) ?>  &project_id=<?= htmlspecialchars($projectId) ?>"
+                          class="text-white bg-red-500 hover:bg-red-600 p-2 rounded-full transition text-xs">
+                          <i class="fas fa-trash">delet</i>
+                      </a>
                     </div>
                     <div class="floating-decorator absolute top-2 right-2 w-6 h-6 <?= $circleColor ?> rounded-full animate-pulse"></div>
                     <div class="floating-decorator absolute bottom-2 left-2 w-4 h-4 <?= $circleColor ?> rounded-full animate-pulse"></div>
@@ -530,125 +563,126 @@
 </div>
 </div>
 
-
 <section id="addModalTask" class="hidden fixed inset-0 flex items-start justify-center bg-black bg-opacity-50">
-    <div class="bg-white px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800 w-[50%] mt-10">
-      <div class="flex items-center justify-between my-6">
-        <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Add task</h2>
-        <button type="button" onclick="returnPage2()" class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">
-          Close
-        </button>
-      </div>
-      <form action="?action=save_task&project_id=<?=$_GET["project_id"]?>" method="POST">
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Tire</span>
-          <input name="titre"
-            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-            placeholder="Jane Doe" />
-        </label>
-        <label class="block mt-4 text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Description</span>
-          <textarea name="description"
-            class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-            rows="3"
-            placeholder="Enter some long form content."></textarea>
-        </label>
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">date start</span>
-          <input name="start_at" type="date"
-            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-            placehtype="JJ/MM/AAAA" />
-            
-        </label>
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400"> date complete</span>
-          <input name="complete_at" type="date"
-            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-            placeholder="JJ/MM/AAAA" />
-        </label>
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Date created</span>
-          <input name="created_at" type="date"
-            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-            placeholder="JJ/MM/AAAA" />
-        </label>
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">id category</span>
-          <input name="isCategory" type="number"
-            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-            placeholder="1" />
-        </label>
-        <label class="block text-sm">
-          <span class="text-gray-700 dark:text-gray-400">id member</span>
-          <input name="member_id" type="text"
-            class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
-            placeholder="1" />
-        </label>
-        <div class="mt-4 text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Account Type</span>
-          <div class="mt-2">
-                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="todo"
-                        value="todo" />
-                      <span class="ml-2">todo</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="todo"
-                        value="doing" />
-                      <span class="ml-2">doing</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="todo"
-                        value="done" />
-                      <span class="ml-2">done</span>
-                    </label>
-                  </div>
-
-                  <div class="mt-4 text-sm">
-          <span class="text-gray-700 dark:text-gray-400">Account Type</span>
-          <div class="mt-2">
-                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="MEDIUM-PRIORITY"
-                        value="URGENT" />
-                      <span class="ml-2">URGENT</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="MEDIUM-PRIORITY"
-                        value="MEDIUM-PRIORITY" />
-                      <span class="ml-2">MEDIUM-PRIORITY</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                      <input
-                        type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-                        name="MEDIUM-PRIORITY"
-                        value="LOW-PRIORITY" />
-                      <span class="ml-2">LOW-PRIORITY</span>
-                    </label>
-                  </div>
-        <div class="flex justify-center mt-4">
-          <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
-          ADD
-          </button>
+    <div class="bg-white px-4 py-3 mb-8 rounded-lg shadow-md dark:bg-gray-800 w-[30%] h-[80%] mt-10 overflow-y-auto">
+        <div class="flex items-center justify-between my-6">
+            <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Add task</h2>
+            <button type="button" onclick="returnPage2()" class="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700">Close</button>
         </div>
-      </form>
+        <form action="?action=save_task&project_id=<?=$_GET['project_id']?>" method="POST">
+            <div class="mb-4">
+                <label class="block text-sm text-gray-700 dark:text-gray-400">Titre</label>
+                <input name="titre" 
+                       class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input" 
+                       placeholder="Jane Doe" />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm text-gray-700 dark:text-gray-400">Description</label>
+                <textarea name="description" 
+                          class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
+                          rows="3" placeholder="Enter some long form content."></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm text-gray-700 dark:text-gray-400">Date Start</label>
+                <input name="start_at" type="date" 
+                       class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input" />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm text-gray-700 dark:text-gray-400">Date Complete</label>
+                <input name="complete_at" type="date" 
+                       class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input" />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm text-gray-700 dark:text-gray-400">Date Created</label>
+                <input name="created_at" type="date" 
+                       class="block w-full mt-1 text-sm border-red-600 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input" />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm text-gray-700 dark:text-gray-400">Category</label>
+                <select name="isCategory" class="block w-full mt-1 text-sm dark:text-gray-300 dark:bg-gray-700 focus:outline-none form-select">
+                    <?php foreach ($categorys as $category): ?>
+                        <option value="<?= htmlspecialchars($category->getId()) ?>">
+                            <?= htmlspecialchars($category->getName()) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-sm text-gray-700 dark:text-gray-400">Member</label>
+                <select name="member_id" class="block w-full mt-1 text-sm dark:text-gray-300 dark:bg-gray-700 focus:outline-none form-select">
+                    <?php foreach ($users as $user): ?>
+                        <option value="<?= htmlspecialchars($user['id']); ?>">
+                            <?= htmlspecialchars($user['name']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <span class="block text-sm text-gray-700 dark:text-gray-400">Task Status</span>
+                <div class="mt-2">
+                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
+                        <input type="radio" 
+                               class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
+                               name="todo" value="TODO" />
+                        <span class="ml-2">To Do</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                        <input type="radio" 
+                               class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
+                               name="todo" value="DOING" />
+                        <span class="ml-2">Doing</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                        <input type="radio" 
+                               class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
+                               name="todo" value="DONE" />
+                        <span class="ml-2">Done</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <span class="block text-sm text-gray-700 dark:text-gray-400">Priority</span>
+                <div class="mt-2">
+                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
+                        <input type="radio" 
+                               class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
+                               name="MEDIUM-PRIORITY" value="URGENT" />
+                        <span class="ml-2">Urgent</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                        <input type="radio" 
+                               class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
+                               name="MEDIUM-PRIORITY" value="MEDIUM-PRIORITY" />
+                        <span class="ml-2">MEDIUM-PRIORITY</span>
+                    </label>
+                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                        <input type="radio" 
+                               class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" 
+                               name="MEDIUM-PRIORITY" value="LOW-PRIORITY" />
+                        <span class="ml-2">LOW-PRIORITY</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex justify-center mt-4">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    Add
+                </button>
+            </div>
+        </form>
     </div>
- </section>
+</section>
+
+
+
 
  <script src="./public/JS/froms.js"></script>
  <script>
